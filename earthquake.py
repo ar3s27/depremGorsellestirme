@@ -16,27 +16,31 @@ while True:
         cells = row.find_all("td")
 
         if cells:
+            location = cells[6].text.strip()
             date = cells[0].text.strip()
             latitude = cells[1].text.strip()
             longitude = cells[2].text.strip()
             depth = cells[3].text.strip()
             magnitude = cells[5].text.strip()
-            location = cells[6].text.strip()
             quake_id = cells[7].text.strip()
 
             if quake_id in kutuphane:
                 continue
             else:
-                print("Yer: " + location)
-                print("Büyüklük: " + magnitude)
+                print("Yer: " + location )
+                print("Enlem: " + latitude)
+                print("Boylam: " + longitude)
                 print("Derinlik: " + depth)
+                print("Büyüklük: " + magnitude)
                 print("Tarih: " + date)
                 print("\n")
 
                 kutuphane[quake_id] = {
-                    "Yer": location,
-                    "Büyüklük": magnitude,
-                    "Derinlik": depth,
+                    "location": location,
+                    "latitude": latitude,
+                    "longitude": longitude,
+                    "depth": depth,
+                    "magnitude": magnitude,
                     "Tarih": date
                 }
 
