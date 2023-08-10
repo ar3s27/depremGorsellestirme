@@ -44,26 +44,38 @@ while True:
                         "longitude": longitude,
                         "depth": depth,
                         "magnitude": magnitude,
-                        "Tarih": date
+                        "date": date
                     }
         
         # CSV dosyasını yazma modunda açın ve başlık satırını yazın
         csv_filename = "earthquake_data.csv"
-        with open(csv_filename, mode='w', newline='') as file:
+        
+        # Sadece yeni verileri eklemek istediğinizden emin olun
+        existing_ids = set()
+        try:
+            with open(csv_filename, mode='r') as file:
+                reader = csv.reader(file)
+                next(reader)  # Başlık satırını atla
+                for row in reader:
+                    existing_ids.add(row[0])  # Id sütunundaki değerleri topla
+        except FileNotFoundError:
+            pass
+        
+        with open(csv_filename, mode='a', newline='') as file:
             writer = csv.writer(file)
-            writer.writerow(["Id","Yer", "Enlem", "Boylam", "Derinlik", "Büyüklük", "Tarih"])
-
-            # Sözlüğün içindeki verileri CSV dosyasına ekleyin
+            
+            # Yeni verileri ekleyin, ancak zaten varsa eklemeyin
             for quake_id, data in kutuphane.items():
-                writer.writerow([
-                    data["quake_id"],
-                    data["location"],
-                    data["latitude"],
-                    data["longitude"],
-                    data["depth"],
-                    data["magnitude"],
-                    data["Tarih"]
-                ])
+                if quake_id not in existing_ids:
+                    writer.writerow([
+                        data["quake_id"],
+                        data["location"],
+                        data["latitude"],
+                        data["longitude"],
+                        data["depth"],
+                        data["magnitude"],
+                        data["date"]
+                    ])
 
         print(f"Veriler {csv_filename} dosyasına başarıyla eklendi.")
         time.sleep(60)
