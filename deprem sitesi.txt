@@ -1,0 +1,6 @@
+fast api 
+web sitesi yap 
+site içinde türkiye haritası olsun ve son depremleri listele 
+çokan son depremleri harita üzerinden göster
+--------------
+son 10 gün içinde olan depremleri listele ve onu yeni bir sayfaya at
