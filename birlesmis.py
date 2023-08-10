@@ -38,6 +38,7 @@ while True:
                     print("\n")
 
                     kutuphane[quake_id] = {
+                        "quake_id": quake_id,
                         "location": location,
                         "latitude": latitude,
                         "longitude": longitude,
@@ -45,8 +46,27 @@ while True:
                         "magnitude": magnitude,
                         "Tarih": date
                     }
+        
+        # CSV dosyasını yazma modunda açın ve başlık satırını yazın
+        csv_filename = "earthquake_data.csv"
+        with open(csv_filename, mode='w', newline='') as file:
+            writer = csv.writer(file)
+            writer.writerow(["Id","Yer", "Enlem", "Boylam", "Derinlik", "Büyüklük", "Tarih"])
+
+            # Sözlüğün içindeki verileri CSV dosyasına ekleyin
+            for quake_id, data in kutuphane.items():
+                writer.writerow([
+                    data["quake_id"],
+                    data["location"],
+                    data["latitude"],
+                    data["longitude"],
+                    data["depth"],
+                    data["magnitude"],
+                    data["Tarih"]
+                ])
+
+        print(f"Veriler {csv_filename} dosyasına başarıyla eklendi.")
         time.sleep(60)
+        
     except AttributeError:
         print("Table not found. Check the website structure.")
-    
-
