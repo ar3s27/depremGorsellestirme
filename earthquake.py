@@ -1,7 +1,6 @@
 import requests as re
 from bs4 import BeautifulSoup as bs
 import time
-import csv
 
 kutuphane = {}
 
