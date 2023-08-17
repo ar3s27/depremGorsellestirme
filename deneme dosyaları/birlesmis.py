@@ -2,6 +2,27 @@ import requests as re
 from bs4 import BeautifulSoup as bs
 import time
 import csv
+import googlemaps
+import folium
+
+def create_map_with_markers(data):
+    harita = folium.Map(location=[39.9334, 32.8597], zoom_start=5)
+
+    for entry in data.values():
+        enlem = entry['latitude']
+        boylam = entry['longitude']
+        buyukluk = entry['magnitude']
+        lokasyon = entry['location']
+
+        popup_content = f"Lokasyon: {lokasyon}<br>Enlem: {enlem}<br>Boylam: {boylam}<br>Büyüklük: {buyukluk}"
+        folium.Marker([enlem, boylam], popup=popup_content).add_to(harita)
+
+    return harita
+
+# Google Haritalar API anahtarını buraya girin
+google_maps_api_key = 'AIzaSyBjIpzDgZxl7INkz8-PPFm1DrpBIVPGseI'
+
+gmaps = googlemaps.Client(key=google_maps_api_key)
 
 kutuphane = {}
 
@@ -37,21 +58,30 @@ while True:
                     print("Tarih: " + date)
                     print("\n")
 
-                    kutuphane[quake_id] = {
-                        "quake_id": quake_id,
-                        "location": location,
-                        "latitude": latitude,
-                        "longitude": longitude,
-                        "depth": depth,
-                        "magnitude": magnitude,
-                        "date": date
-                    }
-        
-        # CSV dosyasını yazma modunda açın ve başlık satırını yazın
+                    # Lokasyon verilerini almak için Google Haritalar API kullanın
+                    geocode_result = gmaps.geocode(location)
+                    if geocode_result:
+                        lat = geocode_result[0]['geometry']['location']['lat']
+                        lng = geocode_result[0]['geometry']['location']['lng']
+
+                        kutuphane[quake_id] = {
+                            "quake_id": quake_id,
+                            "location": location,
+                            "latitude": lat,
+                            "longitude": lng,
+                            "depth": depth,
+                            "magnitude": magnitude,
+                            "date": date
+                        }
+
+        # Haritayı oluştur ve HTML dosyasına kaydet
+        harita = create_map_with_markers(kutuphane)
+        harita.save('deprem_haritasi.html')
+
+        # CSV dosyasını güncelle
         csv_filename = "earthquake_data.csv"
-        
-        # Sadece yeni verileri eklemek istediğinizden emin olun
         existing_ids = set()
+
         try:
             with open(csv_filename, mode='r') as file:
                 reader = csv.reader(file)
@@ -60,10 +90,10 @@ while True:
                     existing_ids.add(row[0])  # Id sütunundaki değerleri topla
         except FileNotFoundError:
             pass
-        
+
         with open(csv_filename, mode='a', newline='') as file:
             writer = csv.writer(file)
-            
+
             # Yeni verileri ekleyin, ancak zaten varsa eklemeyin
             for quake_id, data in kutuphane.items():
                 if quake_id not in existing_ids:
@@ -79,6 +109,6 @@ while True:
 
         print(f"Veriler {csv_filename} dosyasına başarıyla eklendi.")
         time.sleep(60)
-        
+
     except AttributeError:
         print("Table not found. Check the website structure.")

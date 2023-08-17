@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    
+        <script>
+            L_NO_TOUCH = false;
+            L_DISABLE_3D = false;
+        </script>
+    
+    <style>html, body {width: 100%;height: 100%;margin: 0;padding: 0;}</style>
+    <style>#map {position:absolute;top:0;bottom:0;right:0;left:0;}</style>
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_92f1db5e3f2672951d0e8fc47541060c {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+        
+</head>
+<body>
+    
+    
+            <div class="folium-map" id="map_92f1db5e3f2672951d0e8fc47541060c" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_92f1db5e3f2672951d0e8fc47541060c = L.map(
+                "map_92f1db5e3f2672951d0e8fc47541060c",
+                {
+                    center: [39.9334, 32.8597],
+                    crs: L.CRS.EPSG3857,
+                    zoom: 5,
+                    zoomControl: true,
+                    preferCanvas: false,
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_6342f1018c7a52d5b8368af5a9fcee99 = L.tileLayer(
+                "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
+                {"attribution": "Data by \u0026copy; \u003ca target=\"_blank\" href=\"http://openstreetmap.org\"\u003eOpenStreetMap\u003c/a\u003e, under \u003ca target=\"_blank\" href=\"http://www.openstreetmap.org/copyright\"\u003eODbL\u003c/a\u003e.", "detectRetina": false, "maxNativeZoom": 18, "maxZoom": 18, "minZoom": 0, "noWrap": false, "opacity": 1, "subdomains": "abc", "tms": false}
+            ).addTo(map_92f1db5e3f2672951d0e8fc47541060c);
+        
+    
+            var marker_fbb894a1340751dd89d307dd85e9c6fb = L.marker(
+                [37.98609, 36.089587],
+                {}
+            ).addTo(map_92f1db5e3f2672951d0e8fc47541060c);
+        
+    
+        var popup_571763c500ecd6b988fc112a1e82a42b = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_34894e9bd2dfefc04ef86e95d03abf92 = $(`<div id="html_34894e9bd2dfefc04ef86e95d03abf92" style="width: 100.0%; height: 100.0%;">Lokasyon: Saimbeyli (Adana)<br>Enlem: 37.98609<br>Boylam: 36.089587<br>Büyüklük: 2.0</div>`)[0];
+                popup_571763c500ecd6b988fc112a1e82a42b.setContent(html_34894e9bd2dfefc04ef86e95d03abf92);
+            
+        
+
+        marker_fbb894a1340751dd89d307dd85e9c6fb.bindPopup(popup_571763c500ecd6b988fc112a1e82a42b)
+        ;
+
+        
+    
+    
+            var marker_e7b89df5b59c51b5780b95831efab770 = L.marker(
+                [37.452122, 35.819273],
+                {}
+            ).addTo(map_92f1db5e3f2672951d0e8fc47541060c);
+        
+    
+        var popup_319960c2b042017f54dcd9e663ef1f91 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_7918ef271cd36d4017e69d77c11cc992 = $(`<div id="html_7918ef271cd36d4017e69d77c11cc992" style="width: 100.0%; height: 100.0%;">Lokasyon: Kozan (Adana)<br>Enlem: 37.452122<br>Boylam: 35.819273<br>Büyüklük: 1.6</div>`)[0];
+                popup_319960c2b042017f54dcd9e663ef1f91.setContent(html_7918ef271cd36d4017e69d77c11cc992);
+            
+        
+
+        marker_e7b89df5b59c51b5780b95831efab770.bindPopup(popup_319960c2b042017f54dcd9e663ef1f91)
+        ;
+
+        
+    
+    
+            var marker_79ffea7356ecd68444665e7522d37b61 = L.marker(
+                [38.0607937, 37.8936663],
+                {}
+            ).addTo(map_92f1db5e3f2672951d0e8fc47541060c);
+        
+    
+        var popup_a60eab99fc87aef53be417d196358d2a = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_1eb48a8c01d944237ba67fb4a7e616cf = $(`<div id="html_1eb48a8c01d944237ba67fb4a7e616cf" style="width: 100.0%; height: 100.0%;">Lokasyon: Doğanşehir (Malatya)<br>Enlem: 38.0607937<br>Boylam: 37.8936663<br>Büyüklük: 1.4</div>`)[0];
+                popup_a60eab99fc87aef53be417d196358d2a.setContent(html_1eb48a8c01d944237ba67fb4a7e616cf);
+            
+        
+
+        marker_79ffea7356ecd68444665e7522d37b61.bindPopup(popup_a60eab99fc87aef53be417d196358d2a)
+        ;
+
+        
+    
+    
+            var marker_63cff80447ed2b18754c7d0b8bbe6cff = L.marker(
+                [37.7702293, 36.6957216],
+                {}
+            ).addTo(map_92f1db5e3f2672951d0e8fc47541060c);
+        
+    
+        var popup_1839f62f2a46338dd58511ed8542d4c3 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_94507036ec1df917d411a921d54cafda = $(`<div id="html_94507036ec1df917d411a921d54cafda" style="width: 100.0%; height: 100.0%;">Lokasyon: Onikişubat (Kahramanmaraş)<br>Enlem: 37.7702293<br>Boylam: 36.6957216<br>Büyüklük: 1.3</div>`)[0];
+                popup_1839f62f2a46338dd58511ed8542d4c3.setContent(html_94507036ec1df917d411a921d54cafda);
+            
+        
+
+        marker_63cff80447ed2b18754c7d0b8bbe6cff.bindPopup(popup_1839f62f2a46338dd58511ed8542d4c3)
+        ;
+
+        
+    
+    
+            var marker_301547a9cc1e4d93ddc0c967da7ddccd = L.marker(
+                [38.488861, 39.4012151],
+                {}
+            ).addTo(map_92f1db5e3f2672951d0e8fc47541060c);
+        
+    
+        var popup_d7a83d7958fd75b1c9b69eb81f7bb4db = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_cd078daeff7a31e16a9cdcf12f051ddf = $(`<div id="html_cd078daeff7a31e16a9cdcf12f051ddf" style="width: 100.0%; height: 100.0%;">Lokasyon: Hazar Gölü - [06.46 km] Merkez (Elazığ)<br>Enlem: 38.488861<br>Boylam: 39.4012151<br>Büyüklük: 2.9</div>`)[0];
+                popup_d7a83d7958fd75b1c9b69eb81f7bb4db.setContent(html_cd078daeff7a31e16a9cdcf12f051ddf);
+            
+        
+
+        marker_301547a9cc1e4d93ddc0c967da7ddccd.bindPopup(popup_d7a83d7958fd75b1c9b69eb81f7bb4db)
+        ;
+
+        
+    
+    
+            var marker_eb8745cdd7dbab1f80982a8a3f94cffc = L.marker(
+                [37.452122, 35.819273],
+                {}
+            ).addTo(map_92f1db5e3f2672951d0e8fc47541060c);
+        
+    
+        var popup_cab8b48d2b2a68bf1307e440da88a3e1 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_aa969e57ce425300ac6f638cfbb02a6b = $(`<div id="html_aa969e57ce425300ac6f638cfbb02a6b" style="width: 100.0%; height: 100.0%;">Lokasyon: Kozan (Adana)<br>Enlem: 37.452122<br>Boylam: 35.819273<br>Büyüklük: 1.2</div>`)[0];
+                popup_cab8b48d2b2a68bf1307e440da88a3e1.setContent(html_aa969e57ce425300ac6f638cfbb02a6b);
+            
+        
+
+        marker_eb8745cdd7dbab1f80982a8a3f94cffc.bindPopup(popup_cab8b48d2b2a68bf1307e440da88a3e1)
+        ;
+
+        
+    
+    
+            var marker_6678efaa9d22fd4bcc0b8c7172f0843d = L.marker(
+                [38.206537, 37.193076],
+                {}
+            ).addTo(map_92f1db5e3f2672951d0e8fc47541060c);
+        
+    
+        var popup_80cac7d8d0efa28a2037b864a5e08780 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_c0b7b20961f065e532ee468e0e25c9c0 = $(`<div id="html_c0b7b20961f065e532ee468e0e25c9c0" style="width: 100.0%; height: 100.0%;">Lokasyon: Elbistan (Kahramanmaraş)<br>Enlem: 38.206537<br>Boylam: 37.193076<br>Büyüklük: 2.3</div>`)[0];
+                popup_80cac7d8d0efa28a2037b864a5e08780.setContent(html_c0b7b20961f065e532ee468e0e25c9c0);
+            
+        
+
+        marker_6678efaa9d22fd4bcc0b8c7172f0843d.bindPopup(popup_80cac7d8d0efa28a2037b864a5e08780)
+        ;
+
+        
+    
+    
+            var marker_a81a916a75e917d937cf7070ef20fc76 = L.marker(
+                [36.726217, 27.685844],
+                {}
+            ).addTo(map_92f1db5e3f2672951d0e8fc47541060c);
+        
+    
+        var popup_4505825ec2d998ac621c51699356a184 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_8b8d7fa898813c9820c2a9f3fe8ff2ea = $(`<div id="html_8b8d7fa898813c9820c2a9f3fe8ff2ea" style="width: 100.0%; height: 100.0%;">Lokasyon: Akdeniz - [206.51 km] Datça (Muğla)<br>Enlem: 36.726217<br>Boylam: 27.685844<br>Büyüklük: 2.3</div>`)[0];
+                popup_4505825ec2d998ac621c51699356a184.setContent(html_8b8d7fa898813c9820c2a9f3fe8ff2ea);
+            
+        
+
+        marker_a81a916a75e917d937cf7070ef20fc76.bindPopup(popup_4505825ec2d998ac621c51699356a184)
+        ;
+
+        
+    
+    
+            var marker_c0577262498cd777a149ffa553795c05 = L.marker(
+                [38.1531105, 38.7879612],
+                {}
+            ).addTo(map_92f1db5e3f2672951d0e8fc47541060c);
+        
+    
+        var popup_f61f568a4606302086aa66317fa9af03 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_4df71bca44042f09d8d3998fa903deb0 = $(`<div id="html_4df71bca44042f09d8d3998fa903deb0" style="width: 100.0%; height: 100.0%;">Lokasyon: Pütürge (Malatya)<br>Enlem: 38.1531105<br>Boylam: 38.7879612<br>Büyüklük: 1.9</div>`)[0];
+                popup_f61f568a4606302086aa66317fa9af03.setContent(html_4df71bca44042f09d8d3998fa903deb0);
+            
+        
+
+        marker_c0577262498cd777a149ffa553795c05.bindPopup(popup_f61f568a4606302086aa66317fa9af03)
+        ;
+
+        
+    
+    
+            var marker_b0ac843de517a20fe9e5a1f9acf17ae4 = L.marker(
+                [37.7708763, 37.5960704],
+                {}
+            ).addTo(map_92f1db5e3f2672951d0e8fc47541060c);
+        
+    
+        var popup_9bc09fc8ac070be475ed9a35ccaf4f9f = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_50b65a1c141d8c3347718fc9e55a2c98 = $(`<div id="html_50b65a1c141d8c3347718fc9e55a2c98" style="width: 100.0%; height: 100.0%;">Lokasyon: Gölbaşı (Adıyaman)<br>Enlem: 37.7708763<br>Boylam: 37.5960704<br>Büyüklük: 1.8</div>`)[0];
+                popup_9bc09fc8ac070be475ed9a35ccaf4f9f.setContent(html_50b65a1c141d8c3347718fc9e55a2c98);
+            
+        
+
+        marker_b0ac843de517a20fe9e5a1f9acf17ae4.bindPopup(popup_9bc09fc8ac070be475ed9a35ccaf4f9f)
+        ;
+
+        
+    
+</script>
+</html>
