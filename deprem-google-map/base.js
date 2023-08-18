@@ -30,7 +30,7 @@ $(document).ready(function(){
         var contentString = "Yer: " + earthquake.location +
          "<br>Enlem: " + earthquake.latitude +
          "<br>Boylam: " + earthquake.longitude +
-         "<br>Derinlik: " + earthquake.depth + 
+         "<br>Derinlik: " + earthquake.depth + " km"+ 
          "<br>Büyüklük: " + earthquake.magnitude +
          "<br>Tarih: " + earthquake.date;
 

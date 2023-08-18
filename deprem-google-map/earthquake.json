@@ -1,0 +1,92 @@
+{
+    "599549": {
+        "quake_id": "599549",
+        "location": "Köprüköy (Erzurum)",
+        "latitude": "40.007",
+        "longitude": "41.885",
+        "depth": "12.73",
+        "magnitude": "0.9",
+        "date": "2023-08-18 17:59:27"
+    },
+    "599548": {
+        "quake_id": "599548",
+        "location": "Merkez (Bayburt)",
+        "latitude": "40.079",
+        "longitude": "40.372",
+        "depth": "7.65",
+        "magnitude": "1.1",
+        "date": "2023-08-18 17:49:32"
+    },
+    "599547": {
+        "quake_id": "599547",
+        "location": "Bahçe (Osmaniye)",
+        "latitude": "37.226",
+        "longitude": "36.692",
+        "depth": "16.21",
+        "magnitude": "1.3",
+        "date": "2023-08-18 17:48:14"
+    },
+    "599546": {
+        "quake_id": "599546",
+        "location": "Göksun (Kahramanmaraş)",
+        "latitude": "38.026",
+        "longitude": "36.413",
+        "depth": "6.8",
+        "magnitude": "1.8",
+        "date": "2023-08-18 17:35:38"
+    },
+    "599544": {
+        "quake_id": "599544",
+        "location": "Hazar Gölü - [05.07 km] Merkez (Elazığ)",
+        "latitude": "38.486",
+        "longitude": "39.375",
+        "depth": "7.03",
+        "magnitude": "1.7",
+        "date": "2023-08-18 17:20:56"
+    },
+    "599545": {
+        "quake_id": "599545",
+        "location": "Bala (Ankara)",
+        "latitude": "39.57",
+        "longitude": "33.21",
+        "depth": "7.6",
+        "magnitude": "1.0",
+        "date": "2023-08-18 17:17:36"
+    },
+    "599543": {
+        "quake_id": "599543",
+        "location": "Doğanşehir (Malatya)",
+        "latitude": "38.093",
+        "longitude": "37.841",
+        "depth": "8.03",
+        "magnitude": "1.2",
+        "date": "2023-08-18 17:11:38"
+    },
+    "599542": {
+        "quake_id": "599542",
+        "location": "Menteşe (Muğla)",
+        "latitude": "37.254",
+        "longitude": "28.424",
+        "depth": "7.0",
+        "magnitude": "1.7",
+        "date": "2023-08-18 16:55:58"
+    },
+    "599541": {
+        "quake_id": "599541",
+        "location": "Khoy, West Azarbaijan (İran) - [36.40 km] Özalp (Van)",
+        "latitude": "38.841",
+        "longitude": "44.67",
+        "depth": "7.93",
+        "magnitude": "2.2",
+        "date": "2023-08-18 16:50:00"
+    },
+    "599540": {
+        "quake_id": "599540",
+        "location": "Elbistan (Kahramanmaraş)",
+        "latitude": "38.368",
+        "longitude": "37.474",
+        "depth": "7.0",
+        "magnitude": "3.4",
+        "date": "2023-08-18 16:44:50"
+    }
+}
