@@ -1,6 +1,7 @@
-var weekly_quakes_endpoint = "https://deprem.afad.gov.tr/EventData/GetLast5Events";
+var weekly_quakes_endpoint = "earthquake_data.json";
 
 var map;
+var openInfoWindow; // Şu an açık olan bilgi penceresi
 
 $(document).ready(function(){
 
@@ -12,11 +13,11 @@ $(document).ready(function(){
   // Verileri çekmek ve işaretlemek için işlev
   function getAndMarkEarthquakeData() {
     $.getJSON(weekly_quakes_endpoint, function(data) {
-      var earthquakes = data;
+      var earthquakes = Object.values(data); // JSON'daki nesneleri bir diziye dönüştür
 
       for (var i = 0; i < earthquakes.length; i++) {
         var earthquake = earthquakes[i];
-        var latLng = new google.maps.LatLng(earthquake.latitude, earthquake.longitude);
+        var latLng = new google.maps.LatLng(parseFloat(earthquake.latitude), parseFloat(earthquake.longitude));
 
         // İşaretçi oluştur
         var marker = new google.maps.Marker({
@@ -25,14 +26,35 @@ $(document).ready(function(){
           title: earthquake.location
         });
 
-        marker.addListener('click', function() {
-          infoWindow.open(map, marker);
-        });
+        // Bilgi penceresi içeriği
+        var contentString = "Yer: " + earthquake.location +
+         "<br>Enlem: " + earthquake.latitude +
+         "<br>Boylam: " + earthquake.longitude +
+         "<br>Derinlik: " + earthquake.depth + 
+         "<br>Büyüklük: " + earthquake.magnitude +
+         "<br>Tarih: " + earthquake.date;
+
+        // İşaretçiye tıklanınca bilgi penceresi göster
+        attachInfoWindow(marker, contentString);
       }
-      // İşaretçiye tıklanınca bilgi penceresi göster
-      var infoWindow = new google.maps.InfoWindow({
-        content: "Location: " + earthquake.location + "<br>Magnitude: " + earthquake.magnitude
-      });
+    });
+  }
+
+  // İşaretçiye tıklanınca bilgi penceresi gösterme işlevi
+  function attachInfoWindow(marker, content) {
+    var infoWindow = new google.maps.InfoWindow({
+      content: content
+    });
+
+    marker.addListener('click', function() {
+      // Önceki bilgi penceresini kapat
+      if (openInfoWindow) {
+        openInfoWindow.close();
+      }
+      
+      // Yeni bilgi penceresini göster
+      infoWindow.open(marker.get('map'), marker);
+      openInfoWindow = infoWindow;
     });
   }
 
