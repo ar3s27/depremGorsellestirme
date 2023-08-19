@@ -1,7 +1,7 @@
 from aiogram import Bot,Dispatcher,executor,types
 from aiogram.types import InlineKeyboardButton,InlineKeyboardMarkup
 
-bot = Bot(token="6435260959:AAF_XkKOaCnQ0RMjDS2SzVPiSQcOu3n0TJE")
+bot = Bot(token="token-id-buraya-gelecek")
 
 dp= Dispatcher(bot)
 #botun görev yapacağı işlemlerin kodları aşağı yazılacaktır
