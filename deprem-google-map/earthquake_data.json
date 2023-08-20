@@ -1,92 +1,101 @@
 {
-    "599693": {
-        "quake_id": "599693",
-        "location": "Göksun (Kahramanmaraş)",
-        "latitude": "37.945",
-        "longitude": "36.292",
-        "depth": "7.0",
-        "magnitude": "2.5",
-        "date": "2023-08-19 13:57:46"
-    },
-    "599692": {
-        "quake_id": "599692",
-        "location": "Akçadağ (Malatya)",
-        "latitude": "38.308",
-        "longitude": "37.854",
-        "depth": "11.38",
-        "magnitude": "1.9",
-        "date": "2023-08-19 13:55:53"
-    },
-    "599691": {
-        "quake_id": "599691",
-        "location": "Çelikhan (Adıyaman)",
-        "latitude": "38.055",
-        "longitude": "38.276",
-        "depth": "7.0",
-        "magnitude": "1.4",
-        "date": "2023-08-19 13:18:40"
-    },
-    "599686": {
-        "quake_id": "599686",
-        "location": "Elbistan (Kahramanmaraş)",
-        "latitude": "38.387",
-        "longitude": "37.244",
-        "depth": "7.08",
-        "magnitude": "1.7",
-        "date": "2023-08-19 12:46:48"
-    },
-    "599689": {
-        "quake_id": "599689",
-        "location": "Ulubey (Uşak)",
-        "latitude": "38.474",
-        "longitude": "29.158",
-        "depth": "7.0",
-        "magnitude": "1.0",
-        "date": "2023-08-19 12:40:09"
-    },
-    "599688": {
-        "quake_id": "599688",
-        "location": "Eşme (Uşak)",
-        "latitude": "38.487",
-        "longitude": "29.148",
-        "depth": "5.1",
-        "magnitude": "0.7",
-        "date": "2023-08-19 12:38:20"
-    },
-    "599690": {
-        "quake_id": "599690",
-        "location": "Kozan (Adana)",
-        "latitude": "37.608",
-        "longitude": "35.895",
-        "depth": "13.0",
-        "magnitude": "1.4",
-        "date": "2023-08-19 12:32:04"
-    },
-    "599687": {
-        "quake_id": "599687",
+    "599801": {
+        "quake_id": "599801",
         "location": "Pütürge (Malatya)",
-        "latitude": "38.17",
-        "longitude": "38.613",
-        "depth": "7.03",
-        "magnitude": "2.0",
-        "date": "2023-08-19 12:01:00"
+        "latitude": "38.105",
+        "longitude": "38.761",
+        "depth": "7.0",
+        "magnitude": "1.4",
+        "date": "2023-08-20 11:25:16"
     },
-    "599684": {
-        "quake_id": "599684",
-        "location": "Ege Denizi - Gökova Körfezi - [09.26 km] Milas (Muğla)",
-        "latitude": "36.959",
-        "longitude": "27.965",
+    "599800": {
+        "quake_id": "599800",
+        "location": "Yeşilyurt (Malatya)",
+        "latitude": "38.217",
+        "longitude": "38.054",
+        "depth": "7.0",
+        "magnitude": "2.4",
+        "date": "2023-08-20 11:24:13"
+    },
+    "599799": {
+        "quake_id": "599799",
+        "location": "Onikişubat (Kahramanmaraş)",
+        "latitude": "37.834",
+        "longitude": "36.507",
+        "depth": "7.0",
+        "magnitude": "2.0",
+        "date": "2023-08-20 11:05:18"
+    },
+    "599797": {
+        "quake_id": "599797",
+        "location": "Kozan (Adana)",
+        "latitude": "37.768",
+        "longitude": "35.609",
+        "depth": "7.0",
+        "magnitude": "2.7",
+        "date": "2023-08-20 11:03:34"
+    },
+    "599798": {
+        "quake_id": "599798",
+        "location": "Çine (Aydın)",
+        "latitude": "37.709",
+        "longitude": "27.943",
+        "depth": "7.7",
+        "magnitude": "1.5",
+        "date": "2023-08-20 10:33:33"
+    },
+    "599796": {
+        "quake_id": "599796",
+        "location": "Elbistan (Kahramanmaraş)",
+        "latitude": "38.295",
+        "longitude": "37.204",
+        "depth": "15.4",
+        "magnitude": "1.7",
+        "date": "2023-08-20 10:26:52"
+    },
+    "599792": {
+        "quake_id": "599792",
+        "location": "Göksun (Kahramanmaraş)",
+        "latitude": "37.996",
+        "longitude": "36.347",
+        "depth": "22.17",
+        "magnitude": "4.2",
+        "date": "2023-08-20 10:05:53"
+    },
+    "599795": {
+        "quake_id": "599795",
+        "location": "Andırın (Kahramanmaraş)",
+        "latitude": "37.833",
+        "longitude": "36.428",
+        "depth": "6.96",
+        "magnitude": "1.8",
+        "date": "2023-08-20 09:58:32"
+    },
+    "599794": {
+        "quake_id": "599794",
+        "location": "Yeşilyurt (Malatya)",
+        "latitude": "38.222",
+        "longitude": "38.121",
+        "depth": "10.2",
+        "magnitude": "1.2",
+        "date": "2023-08-20 09:40:37"
+    },
+    "599793": {
+        "quake_id": "599793",
+        "location": "Ege Denizi, Sakız Adası (Hiyos) - [20.35 km] Çeşme (İzmir)",
+        "latitude": "38.289",
+        "longitude": "26.021",
+        "depth": "12.62",
+        "magnitude": "2.1",
+        "date": "2023-08-20 09:36:03"
+    },
+    "599802": {
+        "quake_id": "599802",
+        "location": "Yeşilyurt (Malatya)",
+        "latitude": "38.207",
+        "longitude": "38.042",
         "depth": "7.0",
         "magnitude": "1.5",
-        "date": "2023-08-19 11:09:46"
-    },
-    "599685": {
-        "quake_id": "599685",
-        "location": "Elbistan (Kahramanmaraş)",
-        "latitude": "38.193",
-        "longitude": "37.263",
-        "depth": "7.0",
-        "magnitude": "2.1",
-        "date": "2023-08-19 11:01:26"
+        "date": "2023-08-20 11:37:26"
     }
 }

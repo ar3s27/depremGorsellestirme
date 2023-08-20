@@ -1,0 +1,92 @@
+{
+    "599806": {
+        "quake_id": "599806",
+        "location": "Yeşilyurt (Malatya)",
+        "latitude": "38.224",
+        "longitude": "38.108",
+        "depth": "7.02",
+        "magnitude": "1.3",
+        "date": "2023-08-20 11:43:58"
+    },
+    "599802": {
+        "quake_id": "599802",
+        "location": "Yeşilyurt (Malatya)",
+        "latitude": "38.207",
+        "longitude": "38.042",
+        "depth": "7.0",
+        "magnitude": "1.5",
+        "date": "2023-08-20 11:37:26"
+    },
+    "599805": {
+        "quake_id": "599805",
+        "location": "Onikişubat (Kahramanmaraş)",
+        "latitude": "37.452",
+        "longitude": "36.493",
+        "depth": "7.0",
+        "magnitude": "2.1",
+        "date": "2023-08-20 11:33:18"
+    },
+    "599801": {
+        "quake_id": "599801",
+        "location": "Pütürge (Malatya)",
+        "latitude": "38.105",
+        "longitude": "38.761",
+        "depth": "7.0",
+        "magnitude": "1.4",
+        "date": "2023-08-20 11:25:16"
+    },
+    "599800": {
+        "quake_id": "599800",
+        "location": "Yeşilyurt (Malatya)",
+        "latitude": "38.217",
+        "longitude": "38.054",
+        "depth": "7.0",
+        "magnitude": "2.4",
+        "date": "2023-08-20 11:24:13"
+    },
+    "599799": {
+        "quake_id": "599799",
+        "location": "Onikişubat (Kahramanmaraş)",
+        "latitude": "37.834",
+        "longitude": "36.507",
+        "depth": "7.0",
+        "magnitude": "2.0",
+        "date": "2023-08-20 11:05:18"
+    },
+    "599797": {
+        "quake_id": "599797",
+        "location": "Kozan (Adana)",
+        "latitude": "37.768",
+        "longitude": "35.609",
+        "depth": "7.0",
+        "magnitude": "2.7",
+        "date": "2023-08-20 11:03:34"
+    },
+    "599803": {
+        "quake_id": "599803",
+        "location": "Akdeniz - İskenderun Körfezi - [09.77 km] İskenderun (Hatay)",
+        "latitude": "36.702",
+        "longitude": "36.118",
+        "depth": "7.0",
+        "magnitude": "2.0",
+        "date": "2023-08-20 10:56:19"
+    },
+    "599804": {
+        "quake_id": "599804",
+        "location": "Sincik (Adıyaman)",
+        "latitude": "38.127",
+        "longitude": "38.499",
+        "depth": "9.0",
+        "magnitude": "1.2",
+        "date": "2023-08-20 10:51:02"
+    },
+    "599798": {
+        "quake_id": "599798",
+        "location": "Çine (Aydın)",
+        "latitude": "37.709",
+        "longitude": "27.943",
+        "depth": "7.7",
+        "magnitude": "1.5",
+        "date": "2023-08-20 10:33:33"
+    }
+}
