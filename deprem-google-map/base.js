@@ -14,6 +14,7 @@ $(document).ready(function(){
   function getAndMarkEarthquakeData() {
     $.getJSON(earthquake_data, function(data) {
       var earthquakes = Object.values(data);
+      earthquakes.reverse();
   
       var infoHTML = '<div class="row">'; // Start a Bootstrap row
   
@@ -21,10 +22,19 @@ $(document).ready(function(){
         var earthquake = earthquakes[i];
         var latLng = new google.maps.LatLng(parseFloat(earthquake.latitude), parseFloat(earthquake.longitude));
   
+        var markerColor = (i === 0) ? 'red' : 'blue'; // Change the marker color of the most recent earthquake
+        
         var marker = new google.maps.Marker({
           position: latLng,
           map: map,
-          title: earthquake.location
+          title: earthquake.location,
+          icon: {
+            path: google.maps.SymbolPath.CIRCLE,
+            fillColor: markerColor,
+            fillOpacity: 0.7,
+            strokeWeight: 0,
+            scale: 10
+          }
         });
   
         var contentString = "Yer: " + earthquake.location +

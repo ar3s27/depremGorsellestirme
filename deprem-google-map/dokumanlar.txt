@@ -1,0 +1,3 @@
+marker şeklini ve rengini değiştirdiğim sayfalar:
+https://developers.google.com/maps/documentation/javascript/markers?hl=tr#maps_marker_symbol_custom-javascript
+https://developers.google.com/maps/documentation/javascript/reference?hl=tr#SymbolPath
