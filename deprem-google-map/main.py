@@ -16,7 +16,6 @@ def save_to_json(data):
     return json.dumps(data)
 
 kutuphane = {}
-kutuphane1 = {}
 @app.get('/')
 def earthquake():
     while True:
@@ -60,7 +59,6 @@ def earthquake():
                             "magnitude": magnitude,
                             "date": date
                         }
-
             return kutuphane
             
         except AttributeError:
@@ -68,4 +66,4 @@ def earthquake():
         
 
 if __name__ == "__main__":
-    uvicorn.run(app, host="127.0.0.1", port=8001)
+    uvicorn.run(app, host="127.0.0.1", port=8000)

@@ -9,11 +9,10 @@ $(document).ready(function(){
   });
 
   function veriGetir(callback){
-    $.get('http://127.0.0.1:8001/', function(data){
+    $.get('http://127.0.0.1:8000/', function(data){
       callback(data);
     });
   }
-
   function getAndMarkEarthquakeData() {
     veriGetir(function(data){
       var earthquakes = Object.values(data);
@@ -65,6 +64,10 @@ $(document).ready(function(){
 
       infoHTML += '</div>';
       $('#info').html(infoHTML);
+
+      setTimeout(function () {
+        location.reload();
+      }, 60000); // 60,000 milliseconds = 1 minute
     });
   }
 
