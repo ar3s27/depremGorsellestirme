@@ -1,4 +1,13 @@
 {
+    "599895": {
+        "quake_id": "599895",
+        "location": "Çelikhan (Adıyaman)",
+        "latitude": "38.088",
+        "longitude": "38.306",
+        "depth": "7.0",
+        "magnitude": "1.1",
+        "date": "2023-08-21 08:39:55"
+    },
     "599894": {
         "quake_id": "599894",
         "location": "Akçadağ (Malatya)",
@@ -79,14 +88,5 @@
         "depth": "7.02",
         "magnitude": "2.6",
         "date": "2023-08-21 06:15:27"
-    },
-    "599891": {
-        "quake_id": "599891",
-        "location": "Besni (Adıyaman)",
-        "latitude": "37.682",
-        "longitude": "38.01",
-        "depth": "7.0",
-        "magnitude": "2.1",
-        "date": "2023-08-21 06:10:09"
     }
 }
