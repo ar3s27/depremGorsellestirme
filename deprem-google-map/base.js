@@ -11,10 +11,31 @@ $(document).ready(function(){
     zoom: 6 
   });
 
+  function veriGetir(){
+    var test;
+
+    let config = {
+      method: 'get',
+      maxBodyLength: Infinity,
+      url: 'http://127.0.0.1:8001',
+      headers: {'content-type':'application/x-www-form-urlencoded' }
+    };
+    
+    axios.request(config)
+    .then((response) => {
+      console.log(response.data);
+      test = response.data
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+
+   return test;
+  }
   // Deprem verilerini çekme ve işaretleme işlevi
   function getAndMarkEarthquakeData() {
     // JSON dosyasını al
-    $.getJSON(earthquake_data, function(data) {
+    $.getJSON(veriGetir(), function(data) {
       var earthquakes = Object.values(data); // JSON verilerini diziye çevir
       earthquakes.reverse(); // Depremleri ters çevir, en yeni en üstte olsun
 

@@ -1,4 +1,22 @@
 {
+    "599925": {
+        "quake_id": "599925",
+        "location": "Saimbeyli (Adana)",
+        "latitude": "37.794",
+        "longitude": "36.143",
+        "depth": "7.0",
+        "magnitude": "1.8",
+        "date": "2023-08-21 14:38:37"
+    },
+    "599924": {
+        "quake_id": "599924",
+        "location": "Dulkadiroğlu (Kahramanmaraş)",
+        "latitude": "37.508",
+        "longitude": "37.094",
+        "depth": "12.22",
+        "magnitude": "1.8",
+        "date": "2023-08-21 13:48:59"
+    },
     "599923": {
         "quake_id": "599923",
         "location": "Nurdağı (Gaziantep)",
@@ -70,23 +88,5 @@
         "depth": "7.0",
         "magnitude": "1.5",
         "date": "2023-08-21 12:09:06"
-    },
-    "599915": {
-        "quake_id": "599915",
-        "location": "Yeşilyurt (Malatya)",
-        "latitude": "38.147",
-        "longitude": "38.21",
-        "depth": "7.0",
-        "magnitude": "1.8",
-        "date": "2023-08-21 12:05:14"
-    },
-    "599913": {
-        "quake_id": "599913",
-        "location": "Palandöken (Erzurum)",
-        "latitude": "39.827",
-        "longitude": "41.098",
-        "depth": "9.99",
-        "magnitude": "2.0",
-        "date": "2023-08-21 11:58:40"
     }
 }

@@ -4,15 +4,20 @@ import requests as re
 from bs4 import BeautifulSoup as bs
 import time
 import json
+from fastapi.middleware.cors import CORSMiddleware
 
 app = FastAPI(title="Earthquake")
-
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=['*']
+)
 def save_to_json(data):
     with open('earthquake_data.json', 'w', encoding='utf-8') as json_file:
         json.dump(data, json_file, ensure_ascii=False, indent=4)
+    return json.dumps(data)
 
 kutuphane = {}
-
+kutuphane1 = {}
 @app.get('/')
 def earthquake():
     while True:
@@ -48,7 +53,7 @@ def earthquake():
                         print("\n")
 
                         kutuphane[quake_id] = {
-                            "quake_id": quake_id,
+                            'quake_id': quake_id,
                             "location": location,
                             "latitude": latitude,
                             "longitude": longitude,
@@ -56,8 +61,7 @@ def earthquake():
                             "magnitude": magnitude,
                             "date": date
                         }
-            save_to_json(kutuphane)
-            time.sleep(60)
+
             return kutuphane
             
         except AttributeError:
