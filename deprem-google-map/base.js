@@ -5,10 +5,10 @@ var openInfoWindow; // Şu an açık olan bilgi penceresi
 
 $(document).ready(function(){
 
-  // Harita oluşturuluyor
+  // Haritayı oluşturma
   map = new google.maps.Map(document.getElementById('map'), {
     center: {lat: 38.9334, lng: 34.8597}, // Haritanın merkezi koordinatları
-    zoom: 6 // Yakınlaştırma seviyesi
+    zoom: 6 
   });
 
   // Deprem verilerini çekme ve işaretleme işlevi
