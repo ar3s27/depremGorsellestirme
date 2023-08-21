@@ -2,6 +2,7 @@ import requests as re
 from bs4 import BeautifulSoup as bs
 import time
 import json
+from fastapi import FastAPI
 
 # Verileri JSON dosyasına kaydetmek
 def save_to_json(data):
@@ -51,7 +52,7 @@ while True:
                         "magnitude": magnitude,
                         "date": date
                     }
-        save_to_json(kutuphane)              
+        save_to_json(kutuphane)
         time.sleep(60)
         
     except AttributeError:

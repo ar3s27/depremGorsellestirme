@@ -1,0 +1,3 @@
+python json yapan kodu apiye dönüştürecez 
+ondan sonra apinin verdiği json dosyasını javada çalıştıracaz
+fast api
