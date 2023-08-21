@@ -1,53 +1,32 @@
-var earthquake_data = "earthquake_data.json"; // Deprem verilerinin bulunduğu JSON dosyasının adı
-
-var map; // Google Haritalar nesnesi
-var openInfoWindow; // Şu an açık olan bilgi penceresi
+var map;
+var openInfoWindow;
 
 $(document).ready(function(){
 
-  // Haritayı oluşturma
   map = new google.maps.Map(document.getElementById('map'), {
-    center: {lat: 38.9334, lng: 34.8597}, // Haritanın merkezi koordinatları
+    center: {lat: 38.9334, lng: 34.8597},
     zoom: 6 
   });
 
-  function veriGetir(){
-    var test;
-
-    let config = {
-      method: 'get',
-      maxBodyLength: Infinity,
-      url: 'http://127.0.0.1:8001',
-      headers: {'content-type':'application/x-www-form-urlencoded' }
-    };
-    
-    axios.request(config)
-    .then((response) => {
-      console.log(response.data);
-      test = response.data
-    })
-    .catch((error) => {
-      console.log(error);
+  function veriGetir(callback){
+    $.get('http://127.0.0.1:8001/', function(data){
+      callback(data);
     });
-
-   return test;
   }
-  // Deprem verilerini çekme ve işaretleme işlevi
-  function getAndMarkEarthquakeData() {
-    // JSON dosyasını al
-    $.getJSON(veriGetir(), function(data) {
-      var earthquakes = Object.values(data); // JSON verilerini diziye çevir
-      earthquakes.reverse(); // Depremleri ters çevir, en yeni en üstte olsun
 
-      var infoHTML = '<div class="row">'; // Bootstrap satırını başlat
+  function getAndMarkEarthquakeData() {
+    veriGetir(function(data){
+      var earthquakes = Object.values(data);
+      earthquakes.reverse();
+
+      var infoHTML = '<div class="row">';
 
       for (var i = 0; i < earthquakes.length; i++) {
         var earthquake = earthquakes[i];
         var latLng = new google.maps.LatLng(parseFloat(earthquake.latitude), parseFloat(earthquake.longitude));
 
-        var markerColor = (i === 0) ? 'red' : 'blue'; // En son depremin işaret rengini belirle
-        
-        // Yeni bir işaretçi oluştur
+        var markerColor = (i === 0) ? 'red' : 'blue';
+
         var marker = new google.maps.Marker({
           position: latLng,
           map: map,
@@ -61,7 +40,6 @@ $(document).ready(function(){
           }
         });
 
-        // Bilgi penceresi içeriği oluşturma
         var contentString = "Yer: " + earthquake.location +
          "<br>Enlem: " + earthquake.latitude +
          "<br>Boylam: " + earthquake.longitude +
@@ -69,11 +47,9 @@ $(document).ready(function(){
          "<br>Büyüklük: " + earthquake.magnitude +
          "<br>Tarih: " + earthquake.date;
 
-        // İşaretçiye bilgi penceresi ekleniyor
         attachInfoWindow(marker, contentString);
 
-        // Bootstrap kartları oluşturma
-        infoHTML += '<div class="col-md-2 mb-2">'; // Bootstrap sütunu oluştur
+        infoHTML += '<div class="col-md-2 mb-2">';
         infoHTML += '<div class="card text-bg-warning" style="max-width: 15rem;">';
         infoHTML += '<h4 class="card-header">Büyüklük: ' + earthquake.magnitude + '</h4>';
         infoHTML += '<div class="card-body">';
@@ -87,29 +63,25 @@ $(document).ready(function(){
         infoHTML += '</div>';
       }
 
-      infoHTML += '</div>'; // Bootstrap satırını kapat
-      $('#info').html(infoHTML); // HTML içeriğini güncelle
+      infoHTML += '</div>';
+      $('#info').html(infoHTML);
     });
   }
 
-  // İşaretçiye tıklanınca bilgi penceresini gösterme işlevi
   function attachInfoWindow(marker, content) {
     var infoWindow = new google.maps.InfoWindow({
       content: content
     });
 
     marker.addListener('click', function() {
-      // Önceki bilgi penceresini kapat
       if (openInfoWindow) {
         openInfoWindow.close();
       }
       
-      // Yeni bilgi penceresini göster
       infoWindow.open(marker.get('map'), marker);
       openInfoWindow = infoWindow;
     });
   }
 
-  // Deprem verilerini çek ve işaretle
   getAndMarkEarthquakeData();
 });
