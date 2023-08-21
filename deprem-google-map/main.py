@@ -2,7 +2,6 @@ import uvicorn
 from fastapi import FastAPI
 import requests as re
 from bs4 import BeautifulSoup as bs
-import time
 import json
 from fastapi.middleware.cors import CORSMiddleware
 
