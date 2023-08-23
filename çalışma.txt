@@ -1,6 +1,0 @@
-python json yapan kodu apiye dönüştürecez 
-ondan sonra apinin verdiği json dosyasını javada çalıştıracaz
-fast api
-------------------------------------------------------------------
-api doğru çalışıyor ama son depremleri ekrana getirirken son 10 depremi göstermesi gereken
-yerde artmaya devam ediyor ve bu da json verileri arasında bir karmaşa çıkarıyor

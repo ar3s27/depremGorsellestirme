@@ -63,7 +63,7 @@ $(document).ready(function(){
       setTimeout(function () {
         console.log('ınterval')
         getAndMarkEarthquakeData();
-      }, 15000); // 60,000 milliseconds = 1 minute
+      }, 60000); // 60,000 milliseconds = 1 minute
     });
   }
 
