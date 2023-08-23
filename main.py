@@ -1,7 +1,7 @@
 #import uvicorn
 from fastapi import FastAPI
 import requests as re
-from bs4 import BeautifulSoup as bs
+from bs4 import BeautifulSoup
 import json
 from fastapi.middleware.cors import CORSMiddleware
 
@@ -10,10 +10,6 @@ app.add_middleware(
     CORSMiddleware,
     allow_origins=['*']
 )
-def save_to_json(data):
-    with open('earthquake_data.json', 'w', encoding='utf-8') as json_file:
-        json.dump(data, json_file, ensure_ascii=False, indent=4)
-    return json.dumps(data)
 
 kutuphane = {}
 @app.get('/')
@@ -21,7 +17,7 @@ def earthquake():
     while True:
         url = "https://deprem.afad.gov.tr/last-earthquakes.html"
         response = re.get(url)
-        soup = bs(response.content, "html.parser")
+        soup = BeautifulSoup(response.content, "html.parser")
 
         try:
             table = soup.find("table")
@@ -60,9 +56,10 @@ def earthquake():
                             "date": date
                         }
             return kutuphane
-            
+         
         except AttributeError:
             print("Table not found. Check the website structure.")
+ 
         
 '''
 if __name__ == "__main__":
