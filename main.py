@@ -2,7 +2,7 @@
 from fastapi import FastAPI
 import requests as re
 from bs4 import BeautifulSoup
-import json
+#import json
 from fastapi.middleware.cors import CORSMiddleware
 
 app = FastAPI(title="Earthquake")
