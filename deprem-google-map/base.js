@@ -18,7 +18,7 @@ $(document).ready(function(){
       var earthquakes = Object.values(data);
       earthquakes.reverse();
 
-      var infoHTML = '<div class="row">';
+      var tableHTML = '';
 
       for (var i = 0; i < earthquakes.length; i++) {
         var earthquake = earthquakes[i];
@@ -48,26 +48,22 @@ $(document).ready(function(){
 
         attachInfoWindow(marker, contentString);
 
-        infoHTML += '<div class="col-md-2 mb-2">';
-        infoHTML += '<div class="card text-bg-warning" style="max-width: 15rem;">';
-        infoHTML += '<h4 class="card-header">Büyüklük: ' + earthquake.magnitude + '</h4>';
-        infoHTML += '<div class="card-body">';
-        infoHTML += '<h5 class="card-title">Yer: ' + earthquake.location + '</h5>';
-        infoHTML += '<p class="card-text">Enlem: ' + earthquake.latitude + '</p>';
-        infoHTML += '<p class="card-text">Boylam: ' + earthquake.longitude + '</p>';
-        infoHTML += '<p class="card-text">Derinlik: ' + earthquake.depth + ' km</p>';
-        infoHTML += '<p class="card-text">Tarih: ' + earthquake.date + '</p>';
-        infoHTML += '</div>';
-        infoHTML += '</div>';
-        infoHTML += '</div>';
+        tableHTML += '<tr>';
+        tableHTML += '<td>' + earthquake.magnitude + '</td>';
+        tableHTML += '<td>' + earthquake.location + '</td>';
+        tableHTML += '<td>' + earthquake.latitude + '</td>';
+        tableHTML += '<td>' + earthquake.longitude + '</td>';
+        tableHTML += '<td>' + earthquake.depth + ' km</td>';
+        tableHTML += '<td>' + earthquake.date + '</td>';
+        tableHTML += '</tr>';
       }
 
-      infoHTML += '</div>';
-      $('#info').html(infoHTML);
+      $('#info tbody').html(tableHTML);
 
       setTimeout(function () {
-        location.reload();
-      }, 60000); // 60,000 milliseconds = 1 minute
+        console.log('ınterval')
+        getAndMarkEarthquakeData();
+      }, 15000); // 60,000 milliseconds = 1 minute
     });
   }
 
