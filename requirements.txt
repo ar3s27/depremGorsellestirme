@@ -1,0 +1,6 @@
+uvicorn
+FastAPI
+requests
+BeautifulSoup
+json
+CORSMiddleware
