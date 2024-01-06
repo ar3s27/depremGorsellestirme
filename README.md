@@ -1,21 +1,30 @@
-Deprem Görselleştirme Uygulaması
-Bu uygulama, AFAD'ın deprem verilerini çekerek harita üzerinde görselleştiren bir projedir. Verileri çekip işleyen backend tarafı FastAPI kullanılarak yazılmıştır, ön tarafta ise JavaScript ve Google Maps API kullanılarak harita ve tablo oluşturulmaktadır.
+# Deprem Görselleştirme Uygulaması
 
-Dosyalar ve Kullanılan Teknolojiler
-Base.js: Harita ve deprem verilerini çekip işleyen JavaScript dosyası.
+Bu uygulama, AFAD'ın [deprem verileri](https://deprem.afad.gov.tr/last-earthquakes.html)ni çekerek harita üzerinde görselleştiren bir projedir. Verileri çekip işleyen backend tarafı FastAPI kullanılarak yazılmıştır, ön tarafta ise JavaScript ve Google Maps API kullanılarak harita ve tablo oluşturulmaktadır.
 
-index.html: Kullanıcı arayüzü ve harita görüntüsü sağlayan HTML dosyası.
+## Dosyalar ve Kullanılan Teknolojiler
 
-app.py: FastAPI ile yazılmış backend tarafını içeren Python dosyası.
+1. **Base.js**: Harita ve deprem verilerini çekip işleyen JavaScript dosyası.
 
-Kullanım
-Proje dosyalarını indirin.
-index.html dosyasını bir tarayıcıda açarak harita ve deprem bilgilerini gözlemleyebilirsiniz.
-Backend tarafını başlatmak için app.py dosyasını çalıştırın (yorum satırındaki kodu açmanız gerekebilir).
-Gereksinimler
-FastAPI
-Requests
-BeautifulSoup
-Google Maps API Key
-Lisans
-Bu proje açık kaynaklıdır ve MIT lisansı altında dağıtılmaktadır. Detaylı bilgi için lisans dosyasını inceleyebilirsiniz.
+2. **index.html**: Kullanıcı arayüzü ve harita görüntüsü sağlayan HTML dosyası.
+
+3. **app.py**: FastAPI ile yazılmış backend tarafını içeren Python dosyası.
+
+4. **vercel.json**: Vercel dağıtımı için yapılandırma dosyası.
+
+## Kullanım
+
+1. Proje dosyalarını indirin.
+2. `index.html` dosyasını bir tarayıcıda açarak harita ve deprem bilgilerini gözlemleyebilirsiniz.
+3. Backend tarafını başlatmak için `app.py` dosyasını çalıştırın (yorum satırındaki kodu açmanız gerekebilir).
+
+## Gereksinimler
+
+- [FastAPI](https://fastapi.tiangolo.com/)
+- [Requests](https://docs.python-requests.org/en/latest/)
+- [BeautifulSoup](https://www.crummy.com/software/BeautifulSoup/)
+- [Google Maps API Key](https://developers.google.com/maps/gmp-get-started)
+
+## Lisans
+
+Bu proje açık kaynaklıdır ve [MIT lisansı](LICENSE) altında dağıtılmaktadır. Detaylı bilgi için lisans dosyasını inceleyebilirsiniz.
