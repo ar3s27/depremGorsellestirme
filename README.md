@@ -8,7 +8,7 @@ Bu uygulama, AFAD'ın [deprem verileri](https://deprem.afad.gov.tr/last-earthqua
 
 2. **index.html**: Kullanıcı arayüzü ve harita görüntüsü sağlayan HTML dosyası.
 
-3. **app.py**: FastAPI ile yazılmış backend tarafını içeren Python dosyası.
+3. **main.py**: FastAPI ile yazılmış backend tarafını içeren Python dosyası.
 
 4. **vercel.json**: Vercel dağıtımı için yapılandırma dosyası.
 
