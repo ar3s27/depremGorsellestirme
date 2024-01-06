@@ -1,8 +1,8 @@
-#import uvicorn
+import uvicorn
 from fastapi import FastAPI
 import requests as re
 from bs4 import BeautifulSoup
-#import json
+import json
 from fastapi.middleware.cors import CORSMiddleware
 
 app = FastAPI(title="Earthquake")
@@ -20,6 +20,7 @@ def earthquake():
         soup = BeautifulSoup(response.content, "html.parser")
 
         try:
+            site = soup.find("class='k-grid-table-wrap'")
             table = soup.find("table")
             rows = table.find_all("tr")
 
@@ -61,7 +62,6 @@ def earthquake():
             print("Table not found. Check the website structure.")
  
         
-'''
+
 if __name__ == "__main__":
     uvicorn.run(app, host="127.0.0.1", port=8000)
-'''
