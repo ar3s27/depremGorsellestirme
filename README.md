@@ -16,7 +16,7 @@ Bu uygulama, AFAD'ın [deprem verileri](https://deprem.afad.gov.tr/last-earthqua
 
 1. Proje dosyalarını indirin.
 2. `index.html` dosyasını bir tarayıcıda açarak harita ve deprem bilgilerini gözlemleyebilirsiniz.
-3. Backend tarafını başlatmak için `app.py` dosyasını çalıştırın (yorum satırındaki kodu açmanız gerekebilir).
+3. Backend tarafını başlatmak için `main.py` dosyasını çalıştırın (yorum satırındaki kodu açmanız gerekebilir).
 
 ## Gereksinimler
 
