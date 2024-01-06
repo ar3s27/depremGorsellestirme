@@ -20,7 +20,6 @@ def earthquake():
         soup = BeautifulSoup(response.content, "html.parser")
 
         try:
-            site = soup.find("class='k-grid-table-wrap'")
             table = soup.find("table")
             rows = table.find_all("tr")
 
