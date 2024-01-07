@@ -13,7 +13,8 @@ def earthquake():
 
     try:
         table = soup.find("table", class_="k-grid-table")
-        rows = table.find_all("tr", class_="ng-star-inserted")
+        tbody = table.find("tbody", kendogridtablebody="")
+        rows = tbody.find_all("tr", class_="ng-star-inserted")
 
         for row in rows:
             columns = row.find_all("td")
