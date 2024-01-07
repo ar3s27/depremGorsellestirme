@@ -3,6 +3,7 @@ from bs4 import BeautifulSoup
 from fastapi.middleware.cors import CORSMiddleware
 import time
 from selenium import webdriver
+import uvicorn
 
 app = FastAPI(title="Earthquake")
 app.add_middleware(
@@ -29,7 +30,9 @@ def earthquake():
             tbody = table.find("tbody", kendogridtablebody="")
             rows = tbody.find_all("tr")
 
-            for row in enumerate(rows[:11]):
+            earthquakes = []
+
+            for i, row in enumerate(rows[:11]):
                 cells = row.find_all("td")
 
                 if cells:
@@ -52,7 +55,7 @@ def earthquake():
                         print("Tarih: " + date)
                         print("\n")
 
-                        kutuphane[quake_id] = {
+                        earthquake_info = {
                             'quake_id': quake_id,
                             "location": location,
                             "latitude": latitude,
@@ -61,15 +64,17 @@ def earthquake():
                             "magnitude": magnitude,
                             "date": date
                         }
+
+                        earthquakes.append(earthquake_info)
+                        kutuphane[quake_id] = earthquake_info
             
             time.sleep(10)  # Sleep for 10 minutes before the next update
-            return kutuphane
+            return {"earthquake": earthquakes}
 
         except AttributeError:
             print("Table not found. Check the website structure.")
             return {"error": "Table not found. Check the website structure."}
 
-'''
+
 if __name__ == "__main__":
     uvicorn.run(app, host="127.0.0.1", port=8000)
-'''

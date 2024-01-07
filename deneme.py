@@ -31,12 +31,9 @@ kutuphane = {}
 def earthquake():
     while True:
         url = "https://deprem.afad.gov.tr/last-earthquakes.html"
-        # Use Selenium to load the dynamic content
         driver = webdriver.Chrome()
         driver.get(url)
-
-        # Add a delay to wait for JavaScript to execute
-        time.sleep(5)  # Adjust the delay as needed
+        time.sleep(5)  
 
         page_source = driver.page_source
         driver.quit()
