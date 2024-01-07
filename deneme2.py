@@ -11,7 +11,7 @@ app.add_middleware(
     allow_origins=['*']
 )
 
-kutuphane = {}
+earthquake_info = {}
 @app.get('/')
 def earthquake():
     while True:
@@ -44,7 +44,7 @@ def earthquake():
                     magnitude = cells[5].text.strip()
                     quake_id = cells[7].text.strip()
 
-                    if quake_id in kutuphane:
+                    if quake_id in earthquake_info:
                         continue
                     else:
                         print("Yer: " + location)
@@ -55,7 +55,7 @@ def earthquake():
                         print("Tarih: " + date)
                         print("\n")
 
-                        earthquake_info = {
+                        earthquake_info[quake_id] = {
                             'quake_id': quake_id,
                             "location": location,
                             "latitude": latitude,
@@ -64,12 +64,8 @@ def earthquake():
                             "magnitude": magnitude,
                             "date": date
                         }
-
-                        earthquakes.append(earthquake_info)
-                        kutuphane[quake_id] = earthquake_info
             
-            time.sleep(10)  # Sleep for 10 minutes before the next update
-            return {"earthquake": earthquakes}
+            return earthquake_info
 
         except AttributeError:
             print("Table not found. Check the website structure.")
@@ -77,4 +73,4 @@ def earthquake():
 
 
 if __name__ == "__main__":
-    uvicorn.run(app, host="127.0.0.1", port=8000)
+    uvicorn.run(app, host="127.0.0.1", port=7000)
