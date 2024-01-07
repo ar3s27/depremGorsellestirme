@@ -1,6 +1,6 @@
 import uvicorn
 from fastapi import FastAPI
-import requests as re
+from selenium import webdriver
 from bs4 import BeautifulSoup
 
 app = FastAPI(title="Earthquake")
@@ -8,13 +8,19 @@ app = FastAPI(title="Earthquake")
 @app.get('/')
 def earthquake():
     url = "https://deprem.afad.gov.tr/last-earthquakes.html"
-    response = re.get(url)
-    soup = BeautifulSoup(response.content, "html.parser")
+
+    # Use Selenium to load the dynamic content
+    driver = webdriver.Chrome()
+    driver.get(url)
+    page_source = driver.page_source
+    driver.quit()
+
+    soup = BeautifulSoup(page_source, "html.parser")
 
     try:
-        table = soup.find("table", class_="k-grid-table")
+        table = soup.find("table")
         tbody = table.find("tbody", kendogridtablebody="")
-        rows = tbody.find_all("tr", class_="ng-star-inserted")
+        rows = tbody.find_all("tr")
 
         for row in rows:
             columns = row.find_all("td")
@@ -38,4 +44,4 @@ def earthquake():
         print("Table not found. Check the website structure.")
 
 if __name__ == "__main__":
-    uvicorn.run(app, host="127.0.0.1", port=7000)
+    uvicorn.run(app, host="127.0.0.1", port=8000)
