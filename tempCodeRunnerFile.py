@@ -1,5 +1,4 @@
 from fastapi import FastAPI
-from fastapi.responses import JSONResponse
 import uvicorn
 from bs4 import BeautifulSoup
 from fastapi.middleware.cors import CORSMiddleware
@@ -12,19 +11,10 @@ app.add_middleware(
     CORSMiddleware,
     allow_origins=['*']
 )
-
 def save_to_json(data):
     with open('earthquake_data.json', 'w', encoding='utf-8') as json_file:
         json.dump(data, json_file, ensure_ascii=False, indent=4)
-
-def read_json():
-    try:
-        with open('earthquake_data.json', 'r', encoding='utf-8') as json_file:
-            data = json.load(json_file)
-        return data
-    except FileNotFoundError:
-        return {}
-
+        
 kutuphane = {}
 
 @app.get('/')
@@ -89,15 +79,11 @@ def earthquake():
             save_to_json(kutuphane)
             time.sleep(10)  # Sleep for 10 minutes before the next update
             return {"earthquake": earthquakes}
+           
 
         except AttributeError:
             print("Table not found. Check the website structure.")
             return {"error": "Table not found. Check the website structure."}
-
-@app.get('/show_saved_json')
-def show_saved_json():
-    data = read_json()
-    return JSONResponse(content=data)
 
 if __name__ == "__main__":
     uvicorn.run(app, host="127.0.0.1", port=8000)

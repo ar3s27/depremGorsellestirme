@@ -1,0 +1,101 @@
+{
+    "615475": {
+        "quake_id": "615475",
+        "location": "Hendek (Sakarya)",
+        "latitude": "40.7344",
+        "longitude": "30.8428",
+        "depth": "5.7",
+        "magnitude": "1.5",
+        "date": "07-01-2024  12:40:28"
+    },
+    "615474": {
+        "quake_id": "615474",
+        "location": "Yüksekova (Hakkari)",
+        "latitude": "37.4189",
+        "longitude": "43.9894",
+        "depth": "9.3",
+        "magnitude": "2.1",
+        "date": "07-01-2024  12:27:28"
+    },
+    "615473": {
+        "quake_id": "615473",
+        "location": "Terme (Samsun)",
+        "latitude": "41.0536",
+        "longitude": "36.9489",
+        "depth": "5.15",
+        "magnitude": "1.9",
+        "date": "07-01-2024  12:18:37"
+    },
+    "615472": {
+        "quake_id": "615472",
+        "location": "Sivrice (Elazığ)",
+        "latitude": "38.455",
+        "longitude": "39.2003",
+        "depth": "7.82",
+        "magnitude": "1.5",
+        "date": "07-01-2024  12:15:37"
+    },
+    "615471": {
+        "quake_id": "615471",
+        "location": "Darende (Malatya)",
+        "latitude": "38.4722",
+        "longitude": "37.3783",
+        "depth": "7.52",
+        "magnitude": "1.6",
+        "date": "07-01-2024  12:05:49"
+    },
+    "615470": {
+        "quake_id": "615470",
+        "location": "Tuşba (Van)",
+        "latitude": "38.8892",
+        "longitude": "43.5281",
+        "depth": "11.5",
+        "magnitude": "3.2",
+        "date": "07-01-2024  11:51:17"
+    },
+    "615469": {
+        "quake_id": "615469",
+        "location": "Köyceğiz (Muğla)",
+        "latitude": "37.0597",
+        "longitude": "28.9475",
+        "depth": "12.5",
+        "magnitude": "1.2",
+        "date": "07-01-2024  11:06:21"
+    },
+    "615468": {
+        "quake_id": "615468",
+        "location": "Merkez (Amasya)",
+        "latitude": "40.54",
+        "longitude": "35.9806",
+        "depth": "5.64",
+        "magnitude": "1.1",
+        "date": "07-01-2024  10:45:14"
+    },
+    "615467": {
+        "quake_id": "615467",
+        "location": "Çatak (Van)",
+        "latitude": "38.1511",
+        "longitude": "43.3142",
+        "depth": "9.2",
+        "magnitude": "1.8",
+        "date": "07-01-2024  09:16:23"
+    },
+    "615466": {
+        "quake_id": "615466",
+        "location": "Sincik (Adıyaman)",
+        "latitude": "38.1136",
+        "longitude": "38.4253",
+        "depth": "5.7",
+        "magnitude": "1.4",
+        "date": "07-01-2024  08:59:53"
+    },
+    "615465": {
+        "quake_id": "615465",
+        "location": "Afşin (Kahramanmaraş)",
+        "latitude": "38.1467",
+        "longitude": "36.9606",
+        "depth": "7.3",
+        "magnitude": "1.7",
+        "date": "07-01-2024  08:54:10"
+    }
+}
