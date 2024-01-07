@@ -1,8 +1,9 @@
 from fastapi import FastAPI
-import requests
+import uvicorn
 from bs4 import BeautifulSoup
 from fastapi.middleware.cors import CORSMiddleware
 import time
+from selenium import webdriver
 
 app = FastAPI(title="Earthquake")
 app.add_middleware(
@@ -12,16 +13,26 @@ app.add_middleware(
 
 kutuphane = {}
 
-@app.get('/last_11_earthquakes')
-def last_11_earthquakes():
+@app.get('/')
+def earthquake():
     while True:
         url = "https://deprem.afad.gov.tr/last-earthquakes.html"
-        response = requests.get(url)
-        soup = BeautifulSoup(response.content, "html.parser")
+        # Use Selenium to load the dynamic content
+        driver = webdriver.Chrome()
+        driver.get(url)
+
+        # Add a delay to wait for JavaScript to execute
+        time.sleep(5)  # Adjust the delay as needed
+
+        page_source = driver.page_source
+        driver.quit()
+
+        soup = BeautifulSoup(page_source, "html.parser")
 
         try:
-            table = soup.find("table")
-            rows = table.find_all("tr")
+            table = soup.find("table", class_="k-grid-table")
+            tbody = table.find("tbody", kendogridtablebody="")
+            rows = tbody.find_all("tr")
 
             earthquakes = []
 
@@ -60,14 +71,14 @@ def last_11_earthquakes():
 
                         earthquakes.append(earthquake_info)
                         kutuphane[quake_id] = earthquake_info
-
-            return {"last_11_earthquakes": earthquakes}
-            time.sleep(600)  # Sleep for 10 minutes before the next update
+            
+            time.sleep(10)  # Sleep for 10 minutes before the next update
+            return {"earthquake": earthquakes}
+           
 
         except AttributeError:
             print("Table not found. Check the website structure.")
             return {"error": "Table not found. Check the website structure."}
 
 if __name__ == "__main__":
-    import uvicorn
     uvicorn.run(app, host="127.0.0.1", port=8000)
