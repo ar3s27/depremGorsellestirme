@@ -2,6 +2,7 @@ import uvicorn
 from fastapi import FastAPI
 from selenium import webdriver
 from bs4 import BeautifulSoup
+import time
 
 app = FastAPI(title="Earthquake")
 
@@ -12,13 +13,17 @@ def earthquake():
     # Use Selenium to load the dynamic content
     driver = webdriver.Chrome()
     driver.get(url)
+
+    # Add a delay to wait for JavaScript to execute
+    time.sleep(5)  # Adjust the delay as needed
+
     page_source = driver.page_source
     driver.quit()
 
     soup = BeautifulSoup(page_source, "html.parser")
 
     try:
-        table = soup.find("table")
+        table = soup.find("table", class_="k-grid-table")
         tbody = table.find("tbody", kendogridtablebody="")
         rows = tbody.find_all("tr")
 
