@@ -3,7 +3,7 @@ from bs4 import BeautifulSoup
 from fastapi.middleware.cors import CORSMiddleware
 import time
 from selenium import webdriver
-import uvicorn
+#import uvicorn
 
 app = FastAPI(title="Earthquake")
 app.add_middleware(
@@ -70,7 +70,7 @@ def earthquake():
         except AttributeError:
             print("Table not found. Check the website structure.")
             return {"error": "Table not found. Check the website structure."}
-
-
+'''
 if __name__ == "__main__":
     uvicorn.run(app, host="127.0.0.1", port=7000)
+'''
