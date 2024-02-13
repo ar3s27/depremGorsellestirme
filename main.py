@@ -23,7 +23,7 @@ def earthquake():
             table = soup.find("table")
             rows = table.find_all("tr")
 
-            for row in enumerate(rows[:11]):
+            for row in (rows[:11]):
                 cells = row.find_all("td")
 
                 if cells:
