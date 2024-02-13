@@ -9,7 +9,7 @@ $(document).ready(function(){
   });
 
   function veriGetir(callback){
-    $.get('http://127.0.0.1:8000/', function(data){
+    $.get('http://127.0.0.1:8800/', function(data){
       callback(data);
     });
   }
