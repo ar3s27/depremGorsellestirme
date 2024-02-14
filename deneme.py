@@ -30,7 +30,7 @@ def create_map_with_markers(data):
         lokasyon = entry['location']
 
         # Create popup content for the marker
-        popup_content = f"Lokasyon: {lokasyon}<br>Enlem: {enlem}<br>Boylam: {boylam}<br>Büyüklük: {buyukluk}"
+        popup_content = f"Lokasyon: {lokasyon}<br>Enlem: {enlem}<br>Boylam: {boylam}<br>Büyüklük: {buyukluk}<br>Tarih: {date}"
 
         # Determine marker color based on whether it is the most recent earthquake
         if entry == most_recent_quake:
