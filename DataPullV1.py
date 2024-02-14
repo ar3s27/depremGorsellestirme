@@ -4,7 +4,6 @@ import requests as re
 from bs4 import BeautifulSoup
 from fastapi.middleware.cors import CORSMiddleware
 import uuid
-from datetime import datetime
 
 app = FastAPI(title="Earthquake")
 app.add_middleware(
