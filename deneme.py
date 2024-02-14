@@ -13,6 +13,15 @@ def create_map_with_markers(data):
     # Initialize the map
     harita = folium.Map(location=[39.3335, 35.1500], zoom_start=6)
 
+    # Get the most recent earthquake data
+    most_recent_quake = None
+    most_recent_date = ""
+    for quake_id, entry in data.items():
+        date = entry['date']
+        if date > most_recent_date:
+            most_recent_date = date
+            most_recent_quake = entry
+
     # Iterate over each earthquake event in the data
     for quake_id, entry in data.items():
         enlem = float(entry['latitude'])
@@ -23,8 +32,14 @@ def create_map_with_markers(data):
         # Create popup content for the marker
         popup_content = f"Lokasyon: {lokasyon}<br>Enlem: {enlem}<br>Boylam: {boylam}<br>Büyüklük: {buyukluk}"
 
+        # Determine marker color based on whether it is the most recent earthquake
+        if entry == most_recent_quake:
+            marker_color = 'red'  # You can choose any color you prefer for the most recent earthquake marker
+        else:
+            marker_color = 'blue'
+
         # Add marker to the map
-        folium.Marker([enlem, boylam], popup=popup_content).add_to(harita)
+        folium.Marker([enlem, boylam], popup=popup_content, icon=folium.Icon(color=marker_color)).add_to(harita)
 
     return harita
 
