@@ -2,7 +2,6 @@ import uvicorn
 from fastapi import FastAPI
 import requests as re
 from bs4 import BeautifulSoup
-import json
 from fastapi.middleware.cors import CORSMiddleware
 
 app = FastAPI(title="Earthquake")
@@ -23,7 +22,7 @@ def earthquake():
             table = soup.find("table")
             rows = table.find_all("tr")
 
-            for row in (rows[:11]):
+            for row in enumerate(rows[:11]):
                 cells = row.find_all("td")
 
                 if cells:

@@ -3,25 +3,30 @@ import uvicorn
 import requests as re
 from bs4 import BeautifulSoup
 from fastapi.middleware.cors import CORSMiddleware
+import uuid
+from datetime import datetime
 
 app = FastAPI(title="Earthquake")
 app.add_middleware(
     CORSMiddleware,
     allow_origins=['*']
 )
+
 kutuphane = {}
+
 @app.get('/')
 def earthquake():
     url = "https://deprem.afad.gov.tr/last-earthquakes.html"
     response = re.get(url)
     
-    # Check if the response status code is OK
     if response.status_code == 200:
         soup = BeautifulSoup(response.content, "html.parser")
-        # Return the HTML content of the page
         table = soup.find("table")
-        rows = table.find_all("tr")
-        for row in rows[:11]:
+        rows = table.find_all("tr")[1:]  # Skip the first row (header)
+        last_10_rows = rows[:10]  # Get the last 10 rows
+        
+        earthquakes = {}
+        for row in last_10_rows:
             cells = row.find_all("td")
 
             if cells:
@@ -31,27 +36,23 @@ def earthquake():
                 longitude = cells[2].text.strip()
                 depth = cells[3].text.strip()
                 magnitude = cells[5].text.strip()
-                quake_id = cells[7].text.strip()
-                if quake_id in kutuphane:
-                    continue
-                else:
-                    print("Yer: " + location)
-                    print("Enlem: " + latitude)
-                    print("Boylam: " + longitude)
-                    print("Derinlik: " + depth)
-                    print("Büyüklük: " + magnitude)
-                    print("Tarih: " + date)
-                    print("\n")
-
-                    kutuphane[quake_id] = {
-                        'quake_id': quake_id,
-                        "location": location,
-                        "latitude": latitude,
-                        "longitude": longitude,
-                        "depth": depth,
-                        "magnitude": magnitude,
-                        "date": date}
-        return kutuphane   
+                quake_id = str(uuid.uuid4())
+                
+                earthquake_data = {
+                    "quake_id": quake_id,
+                    "location": location,
+                    "latitude": latitude,
+                    "longitude": longitude,
+                    "depth": depth,
+                    "magnitude": magnitude,
+                    "date": date
+                }
+                earthquakes[quake_id] = earthquake_data
+        
+        # Update the global dictionary with new earthquake data
+        kutuphane.update(earthquakes)
+        
+        return earthquakes
     else:
         # If there's an error fetching the page, return an error message
         return {"error": "Failed to fetch earthquake data"}
