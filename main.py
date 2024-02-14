@@ -11,7 +11,6 @@ app.add_middleware(
 )
 
 kutuphane = {}
-quake_id = str(uuid.uuid4())
 
 @app.get('/')
 def earthquake():
@@ -36,6 +35,7 @@ def earthquake():
                         longitude = cells[2].text.strip()
                         depth = cells[3].text.strip()
                         magnitude = cells[5].text.strip()
+                        quake_id = str(uuid.uuid4())
                         if quake_id in kutuphane:
                             continue
                         else: 
