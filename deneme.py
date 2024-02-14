@@ -11,7 +11,7 @@ def fetch_earthquake_data(url):
 
 def create_map_with_markers(data):
     # Initialize the map
-    harita = folium.Map(location=[39.9334, 32.8597], zoom_start=6)
+    harita = folium.Map(location=[39.3335, 35.1500], zoom_start=6)
 
     # Iterate over each earthquake event in the data
     for quake_id, entry in data.items():
