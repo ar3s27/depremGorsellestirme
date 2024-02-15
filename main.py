@@ -60,4 +60,3 @@ def earthquake():
 
         except AttributeError:
             print("Table not found. Check the website structure.")
- 
