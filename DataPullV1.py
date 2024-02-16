@@ -51,12 +51,10 @@ def earthquake():
                             }
                             earthquakes[quake_id] = earthquake_data
                 
-                # Update the global dictionary with new earthquake data
                 kutuphane.update(earthquakes)
                 
                 return earthquakes
             else:
-                # If there's an error fetching the page, return an error message
                 return {"error": "Failed to fetch earthquake data"}
 
         except AttributeError:
