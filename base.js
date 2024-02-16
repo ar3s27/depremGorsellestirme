@@ -79,6 +79,5 @@ $(document).ready(function(){
       openInfoWindow = infoWindow;
     });
   }
-
   getAndMarkEarthquakeData();
 });
