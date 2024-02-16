@@ -23,7 +23,6 @@ $(document).ready(function(){
       for (var i = 0; i < earthquakes.length; i++) {
         var earthquake = earthquakes[i];
         var latLng = new google.maps.LatLng(parseFloat(earthquake.latitude), parseFloat(earthquake.longitude));
-
         var markerColor = (i === 0) ? 'red' : 'blue';
 
         var marker = new google.maps.Marker({
@@ -71,7 +70,6 @@ $(document).ready(function(){
     var infoWindow = new google.maps.InfoWindow({
       content: content
     });
-
     marker.addListener('click', function() {
       if (openInfoWindow) {
         openInfoWindow.close();
