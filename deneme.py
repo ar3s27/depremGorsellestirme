@@ -16,6 +16,7 @@ def create_map_with_markers(data):
     # Get the most recent earthquake data
     most_recent_quake = None
     most_recent_date = ""
+    
     for quake_id, entry in data.items():
         date = entry['date']
         if date > most_recent_date:
