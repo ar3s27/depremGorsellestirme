@@ -1,0 +1,22 @@
+# Deprem API (FastAPI) — AFAD'ın son 10 depremini JSON olarak verir.
+# Sunucuda ~/apps/deprem-api/compose.yaml olarak durur; deploy/deploy.sh günceller.
+# Cloudflare Tunnel ve diğer uygulamalar (deprem haritası, Telegram botu) ona
+# ortak "web" ağı üzerinden http://deprem-api:8000 adresiyle ulaşır.
+services:
+  api:
+    build: ./app
+    image: deprem-api:latest
+    container_name: deprem-api
+    restart: unless-stopped
+    read_only: true
+    tmpfs:
+      - /tmp
+    security_opt:
+      - no-new-privileges:true
+    networks:
+      web:
+        aliases: [deprem-api]
+
+networks:
+  web:
+    external: true
