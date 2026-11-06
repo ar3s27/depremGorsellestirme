@@ -1,63 +1,113 @@
-# English
-# Earthquake Visualization Application
+# Sismik — Türkiye canlı deprem haritası
 
-This application visualizes earthquake data obtained from [AFAD](https://deprem.afad.gov.tr/last-earthquakes.html). The backend, written in FastAPI, fetches and processes the earthquake data. On the frontend, a map and table are created using JavaScript and Google Maps API.
+**Canlı:** https://deprem.veyselerkoyuncu.com.tr
 
-## Files and Technologies Used
+AFAD'ın deprem kayıtlarını dakikada bir çeken, kendi veritabanında biriktiren ve bunları
+harita, sismogram şeridi, liste, açık API ve Telegram botu olarak sunan tek bir servis.
 
-1. **Base.js**: JavaScript file that fetches and processes map and earthquake data.
+- **Harita:** her deprem büyüklüğüne göre boyutlanan ve renklenen bir nokta; son bir saatin
+  depremleri nabız gibi atar, eskiyenler soluklaşır.
+- **Sismogram şeridi:** seçili aralıktaki her deprem, zamanına denk gelen yerde büyüklüğüyle
+  orantılı bir dalga olarak çizilir. Dalganın üstüne gelmek ya da tıklamak depremi seçer.
+- **Canlı akış:** yeni depremler sayfayı yenilemeden gelir (Server-Sent Events); 3 ve üzeri
+  için bildirim çıkar.
+- **Ayrıntı:** saat (TSİ ve UTC), derinlik, koordinat, 50 km çevresindeki öncü ve artçı
+  depremler, paylaşılabilir bağlantı, AFAD kaydı.
+- **Telegram botu:** son depremler, yakınındaki depremler (konum gönder), büyüklük eşiğine göre
+  anlık uyarı aboneliği.
 
-2. **index.html**: HTML file providing the user interface and map view.
+## Mimari
 
-3. **app.py**: Python file containing the backend written with FastAPI.
+```
+              ┌────────────────────── deprem konteyneri ──────────────────────┐
+AFAD JSON ──► │ Toplayıcı ─► SQLite (/data) ─► REST API  ─► /api/quakes …     │
+  (60 sn)     │     │                                                         │
+              │     └─► Yayın merkezi ─┬─► SSE ─────────► /api/stream         │
+              │                        └─► Telegram botu ─► abonelere uyarı   │
+              │ Derlenmiş ön yüz (React + MapLibre) ─────► /                  │
+              └───────────────────────────────────────────────────────────────┘
+```
 
-4. **vercel.json**: Configuration file for Vercel deployment.
+- **backend/** — Python 3.12, FastAPI, httpx, aiogram 3, SQLite (WAL).
+  - `afad.py`: AFAD istemcisi. Servis tek istekte en fazla 1000 olay döndürür; dolu gelen
+    pencereler ikiye bölünerek yeniden istenir.
+  - `collector.py`: açılışta geçmişi doldurur (varsayılan 14 gün), sonra dakikada bir son 24
+    saati çeker; yeni ve güncellenen depremleri yayın merkezine bildirir.
+  - `store.py`: depremler ve bot aboneleri. AFAD yalnızca son ~1000 olayı tuttuğu için uzun
+    geçmiş burada birikir.
+  - `main.py`: API, SSE, güvenlik başlıkları ve ön yüzün sunulması.
+  - `bot.py`: Telegram botu; `TELEGRAM_BOT_TOKEN` boşsa hiç başlamaz.
+- **frontend/** — React 19, TypeScript, Vite, MapLibre GL. Altlık OpenFreeMap'in anahtarsız
+  koyu haritası, Sismik renklerine boyanır.
 
-## Usage
+## API
 
-1. Download the project files.
-2. Open the `index.html` file in a browser to observe the map and earthquake data.
-3. Start the backend by running the `app.py` file (you may need to uncomment the code).
+Hepsi `GET`, CORS açık, anahtar gerekmez. Etkileşimli belgeler: [`/api/docs`](https://deprem.veyselerkoyuncu.com.tr/api/docs)
 
-## Requirements
+| Adres | Ne döner |
+| --- | --- |
+| `/api/quakes?hours=24&min_mag=0&limit=` | Son `hours` saatin depremleri, yeniden eskiye (`hours` 1–8760) |
+| `/api/quakes/{id}` | Tek deprem ve 50 km çevresinde ±7 gündeki depremler |
+| `/api/stream` | Canlı akış (SSE): `event: new` / `event: update`, gövde deprem JSON'ı |
+| `/api/health` | Kayıt sayısı, son çekim zamanı, varsa son hata |
 
-- [FastAPI](https://fastapi.tiangolo.com/)
-- [Requests](https://docs.python-requests.org/en/latest/)
-- [BeautifulSoup](https://www.crummy.com/software/BeautifulSoup/)
-- [Google Maps API Key](https://developers.google.com/maps/gmp-get-started)
+Örnek:
 
-## License
+```bash
+curl "https://deprem.veyselerkoyuncu.com.tr/api/quakes?hours=6&min_mag=3"
+```
 
-This project is open source and distributed under the [MIT license](LICENSE). You can review the license file for detailed information.
+Zamanlar UTC ve ISO 8601 (`2026-11-07T01:24:14Z`); büyüklük, derinlik (km) ve koordinatlar
+sayıdır. Eski `deprem-api.veyselerkoyuncu.com.tr` alan adı da aynı servise gelir.
 
-# Türkçe
-# Deprem Görselleştirme Uygulaması
+## Telegram botu
 
-Bu uygulama, AFAD'ın [deprem verileri](https://deprem.afad.gov.tr/last-earthquakes.html)ni çekerek harita üzerinde görselleştiren bir projedir. Verileri çekip işleyen backend tarafı FastAPI kullanılarak yazılmıştır, ön tarafta ise JavaScript ve Google Maps API kullanılarak harita ve tablo oluşturulmaktadır.
+| Komut | |
+| --- | --- |
+| `/son` | Son 10 deprem |
+| `/buyukler` | Son 7 günün 4 ve üzeri depremleri |
+| `/abone 4.5` | Bu büyüklük ve üzeri için anlık uyarı (varsayılan 4) |
+| `/iptal` | Uyarıları kapat |
+| konum gönder | 100 km çevrendeki son 7 günün depremleri |
 
-## Dosyalar ve Kullanılan Teknolojiler
+## Geliştirme
 
-1. **Base.js**: Harita ve deprem verilerini çekip işleyen JavaScript dosyası.
+Arka uç (Python 3.12):
 
-2. **index.html**: Kullanıcı arayüzü ve harita görüntüsü sağlayan HTML dosyası.
+```bash
+cd backend
+python -m venv .venv && . .venv/Scripts/activate   # Linux/macOS: . .venv/bin/activate
+pip install -r requirements-dev.txt
+pytest
+uvicorn app.main:create_app --factory --port 8000
+```
 
-3. **main.py**: FastAPI ile yazılmış backend tarafını içeren Python dosyası.
+Ön yüz (Node 22), ayrı bir terminalde. Vite `/api` isteklerini 8000 portuna yönlendirir:
 
-4. **vercel.json**: Vercel dağıtımı için yapılandırma dosyası.
+```bash
+cd frontend
+npm install
+npm run dev        # http://localhost:5174
+```
 
-## Kullanım
+Ortam değişkenleri: `DB_PATH`, `POLL_SECONDS`, `BACKFILL_DAYS`, `COLLECTOR` (`0` toplayıcıyı
+kapatır), `TELEGRAM_BOT_TOKEN`, `PUBLIC_URL`, `STATIC_DIR`.
 
-1. Proje dosyalarını indirin.
-2. `index.html` dosyasını bir tarayıcıda açarak harita ve deprem bilgilerini gözlemleyebilirsiniz.
-3. Backend tarafını başlatmak için `main.py` dosyasını çalıştırın (yorum satırındaki kodu açmanız gerekebilir).
+## Yayın
 
-## Gereksinimler
+Ev sunucusunda Docker ile çalışır; Cloudflare Tunnel `http://deprem:8000` adresine yönlendirir.
 
-- [FastAPI](https://fastapi.tiangolo.com/)
-- [Requests](https://docs.python-requests.org/en/latest/)
-- [BeautifulSoup](https://www.crummy.com/software/BeautifulSoup/)
-- [Google Maps API Key](https://developers.google.com/maps/gmp-get-started)
+```bash
+bash deploy/deploy.sh
+```
 
-## Lisans
+Betik git'e kayıtlı dosyaları sunucuya kopyalar, imajı orada derler ve konteyneri yeniden
+başlatır. Telegram token'ı sunucuda `~/apps/deprem/.env` dosyasına elle yazılır; repoya girmez.
 
-Bu proje açık kaynaklıdır ve [MIT lisansı](LICENSE) altında dağıtılmaktadır. Detaylı bilgi için lisans dosyasını inceleyebilirsiniz.
+## Kaynak ve lisans
+
+Veriler [AFAD](https://deprem.afad.gov.tr)'a aittir; bu site resmî bir kaynak değildir. Harita
+altlığı © [OpenFreeMap](https://openfreemap.org), © [OpenMapTiles](https://openmaptiles.org),
+© [OpenStreetMap](https://www.openstreetmap.org/copyright) katkıcıları.
+
+Kod MIT lisansıyla açıktır.

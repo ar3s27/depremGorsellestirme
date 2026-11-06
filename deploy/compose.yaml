@@ -1,21 +1,30 @@
-# Deprem API (FastAPI) — AFAD'ın son 10 depremini JSON olarak verir.
-# Sunucuda ~/apps/deprem-api/compose.yaml olarak durur; deploy/deploy.sh günceller.
-# Cloudflare Tunnel ve diğer uygulamalar (deprem haritası, Telegram botu) ona
-# ortak "web" ağı üzerinden http://deprem-api:8000 adresiyle ulaşır.
+# Sismik — deprem haritası, API ve Telegram botu tek serviste.
+# Sunucuda ~/apps/deprem/compose.yaml olarak durur; deploy/deploy.sh günceller.
+# Cloudflare Tunnel ona ortak "web" ağı üzerinden http://deprem:8000 adresiyle ulaşır
+# (deprem.… ve deprem-api.… alan adlarının ikisi de buraya gelir).
 services:
-  api:
+  deprem:
     build: ./app
-    image: deprem-api:latest
-    container_name: deprem-api
+    image: deprem:latest
+    container_name: deprem
     restart: unless-stopped
+    env_file: .env          # TELEGRAM_BOT_TOKEN burada; boşsa bot çalışmaz, site çalışır
+    environment:
+      PUBLIC_URL: https://deprem.veyselerkoyuncu.com.tr
+    volumes:
+      - ./data:/data        # SQLite: AFAD'ın tuttuğundan uzun deprem geçmişi
     read_only: true
     tmpfs:
       - /tmp
     security_opt:
       - no-new-privileges:true
+    logging:
+      options:
+        max-size: 5m
+        max-file: "3"
     networks:
       web:
-        aliases: [deprem-api]
+        aliases: [deprem]
 
 networks:
   web:

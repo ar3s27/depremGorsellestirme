@@ -6,8 +6,8 @@
 set -euo pipefail
 
 SERVER="${SERVER:-veysel@192.168.1.4}"
-REMOTE_DIR="${REMOTE_DIR:-apps/deprem-api}"
-PUBLIC_URL="https://deprem-api.veyselerkoyuncu.com.tr"
+REMOTE_DIR="${REMOTE_DIR:-apps/deprem}"
+PUBLIC_URL="https://deprem.veyselerkoyuncu.com.tr"
 
 cd "$(dirname "$0")/.."
 

@@ -1,5 +1,11 @@
 .git
 .vscode
-__pycache__
-*.pyc
+.env
 deploy
+data
+**/__pycache__
+**/*.pyc
+**/.pytest_cache
+backend/tests
+frontend/node_modules
+frontend/dist
